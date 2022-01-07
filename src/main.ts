@@ -1,19 +1,32 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import { KeyVaultClient, YamlHelper } from './lib'
 
-async function run(): Promise<void> {
+export async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    const keyvault: string = core.getInput('keyvault', { required: true })
+    const secret: string = core.getInput('secret', { required: true })
+    const key: string = core.getInput('key', { required: true })
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    core.info(`Fetching secret ${secret} from keyvault ${keyvault}.`)
+    const client = new KeyVaultClient(keyvault)
+    const secretValue: string = await client.getSecretValue(secret)
 
-    core.setOutput('time', new Date().toTimeString())
+    core.info(`Resolving value for key ${key}.`)
+    const yaml = new YamlHelper(secretValue)
+    const results = yaml.reduce(key.split(','))
+
+    for (const result of results) {
+      setSafeOutput(result.key, result.value)
+    }
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
+}
+
+function setSafeOutput(key: string, value: string): void {
+  core.debug(`Setting masked output for key ${key}.`)
+  core.setSecret(value)
+  core.setOutput(key, value)
 }
 
 run()
