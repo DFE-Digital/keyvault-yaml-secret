@@ -1,11 +1,27 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+# yaml-language-server: $ref=https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-updating-workflows#workflow-yaml
+
+name: Azure Key Vault - Yaml Secrets
+description: Extract one or more keys from a yaml object stored in an Azure Key Vault
+
 inputs:
-  milliseconds: # change this
+  keyvault:
+    description: The Key Vault Name
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  secret:
+    description: The name of the Key Vault secret
+    required: true
+  key:
+    description: A comma separated list of keys to extract from the YAML file
+    required: true
+outputs:
+  secrets:
+    description: A number of secrets extracted from the YAML object
+
+branding:
+  icon: 'lock'  
+  color: 'yellow'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
