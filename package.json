@@ -1,11 +1,11 @@
 {
   "name": "keyvault-yaml-secret",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Retrieve multiple values from a yaml file stored in Azure Key Vault",
   "main": "dist/main.js",
   "scripts": {
-    "build":  "npx ncc build ./src/main.ts",
+    "build": "npx ncc build ./src/main.ts",
     "test": "jest",
     "start": "npx ncc run ./src/main.ts",
     "format-check": "prettier --check '**/*.ts'",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.10.5",
-    "@types/jest": "^27.0.3",    
+    "@types/jest": "^27.0.3",
     "@typescript-eslint/parser": "^5.0.0",
     "@vercel/ncc": "^0.31.1",
     "eslint": "^7.32.0",
