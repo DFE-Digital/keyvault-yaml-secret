@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Retrieve multiple values from a yaml file stored in Azure Key Vault",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "npx ncc build ./src/main.ts",
     "test": "jest",
