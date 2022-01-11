@@ -29,20 +29,12 @@ jobs:
       - name: Test 
         run: npm run test    
 
-      - name: Build Changelog
-        if: startsWith(github.ref, 'refs/tags/v')
-        id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v1
-        with:
-          configuration: "changelog.json"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/v')
         id: create_release
         uses: ncipollo/release-action@v1
         with:
           name: keyvault-yaml-secret
+          generateReleaseNotes: true
           body: ${{steps.build_changelog.outputs.changelog}}
           token: ${{ secrets.GITHUB_TOKEN }}
