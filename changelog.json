@@ -1,0 +1,9 @@
+{
+    "categories": [
+        {
+            "title": "## 🚀 Changes",
+            "labels": []
+        }
+    ],
+    "template": "${{CHANGELOG}}"
+}
