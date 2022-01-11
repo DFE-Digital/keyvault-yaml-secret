@@ -72,11 +72,13 @@ npm test
 
 ## Releasing
 
-To create a realease you can run the following commands:
+To create a realease you can run the following commands ensuring that you are on main:
 
 ``` bash
 npm version "v1.0.0"
 git push --follow-tags
 ```
 
-A release will only be created against the `main` branch.
+Once the release has been created you will need to publish it by following the instructions [provided by GitHub](https://docs.github.com/en/actions/creating-actions/publishing-actions-in-github-marketplace).
+
+Ensure that the security email has been set correctly and the primary catagory is set to `Continuous integration`.
