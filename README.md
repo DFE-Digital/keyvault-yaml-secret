@@ -46,11 +46,12 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}    
 
-      - uses: DfE-Digital/keyvault-yaml-secret@v1
+      - uses: DfE-Digital/keyvault-yaml-secret
+        id:  keyvault-yaml-secret
         with:
           keyvault: ${{ env.KEY_VAULT_NAME }}
           secret: ${{ env.KEY_VAULT_INFRA_SECRET_NAME }}
-          key: CF_USER
+          key: CF_USER, CF_PASSWORD
         env:
           GITHUB_TOKEN: ${{ github.token }}
 ```
