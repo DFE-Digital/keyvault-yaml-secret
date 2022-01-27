@@ -46,7 +46,7 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}    
 
-      - uses: DfE-Digital/keyvault-yaml-secret
+      - uses: DfE-Digital/keyvault-yaml-secret@v1
         id:  keyvault-yaml-secret
         with:
           keyvault: ${{ env.KEY_VAULT_NAME }}
