@@ -1,6 +1,6 @@
 {
   "name": "keyvault-yaml-secret",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Retrieve multiple values from a yaml file stored in Azure Key Vault",
   "main": "dist/index.js",
