@@ -7,6 +7,11 @@ export async function run(): Promise<void> {
     const secret: string = core.getInput('secret', { required: true })
     const key: string = core.getInput('key', { required: true })
 
+    if (process.env.DEBUG_BUILD == 'true') {
+      core.info(`The action was successfully called with inputs keyvault=${keyvault}, secret=${secret}, key=${key}`);
+      process.exit(0);
+    }
+
     core.info(`Fetching secret ${secret} from keyvault ${keyvault}.`)
     const client = new KeyVaultClient(keyvault)
     const secretValue: string = await client.getSecretValue(secret)
