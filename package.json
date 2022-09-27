@@ -27,7 +27,7 @@
     "@azure/core-http": "^2.2.7",
     "@azure/identity": "^3.0.0",
     "@azure/keyvault-secrets": "^4.6.0",
-    "yaml": "^2.1.1"
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",
