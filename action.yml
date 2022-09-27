@@ -19,9 +19,9 @@ outputs:
     description: A number of secrets extracted from the YAML object
 
 branding:
-  icon: 'lock'  
+  icon: 'lock'
   color: 'yellow'
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
