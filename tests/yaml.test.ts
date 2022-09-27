@@ -2,7 +2,6 @@
 import {KeyNotFoundError, YamlHelper} from '../src/lib/yaml'
 import {expect, it} from '@jest/globals'
 import {readFileSync} from 'fs'
-import {YAMLParseError} from 'yaml'
 
 const input = 'random-key'
 
@@ -36,14 +35,9 @@ describe('When reduce is called with a single key and an invalid yaml file', () 
   })
 
   it('throws when the yaml cannot be parsed', () => {
-    try {
+    expect(() => {
       yaml.reduce([input])
-    } catch (e) {
-      if (e instanceof YAMLParseError) {
-        expect(e.message).toContain('Implicit keys need to be on a single line')
-      }
-      expect(e).toBeInstanceOf(YAMLParseError)
-    }
+    }).toThrow('Implicit map keys need to be on a single line')
   })
 })
 
