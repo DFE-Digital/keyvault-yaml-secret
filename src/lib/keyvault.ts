@@ -5,20 +5,20 @@ import { RestError } from '@azure/core-http'
 
 export class EmptySecretError extends Error {
     constructor(message: string) {
-        super(message);
-        this.name = this.constructor.name;
+        super(message)
+        this.name = this.constructor.name
 
-        Error.captureStackTrace(this, this.constructor);
+        Error.captureStackTrace(this, this.constructor)
     }
 }
 
 
 export class SecretNotFoundError extends Error {
     constructor(message: string) {
-        super(message);
-        this.name = this.constructor.name;
+        super(message)
+        this.name = this.constructor.name
 
-        Error.captureStackTrace(this, this.constructor);
+        Error.captureStackTrace(this, this.constructor)
     }
 }
 
