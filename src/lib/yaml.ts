@@ -2,10 +2,10 @@ import YAML from 'yaml'
 
 export class KeyNotFoundError extends Error {
     constructor(message: string) {
-        super(message);
-        this.name = this.constructor.name;
+        super(message)
+        this.name = this.constructor.name
 
-        Error.captureStackTrace(this, this.constructor);
+        Error.captureStackTrace(this, this.constructor)
     }
 }
 
@@ -35,7 +35,7 @@ export class YamlHelper {
         const yaml = YAML.parse(this.yaml)
         const results: KeyValuePair[] = keys.map<KeyValuePair>((key: string): KeyValuePair => {
             key = key.trim()
-            return { key: key, value: this.getValue(yaml, key) }
+            return { key, value: this.getValue(yaml, key) }
         })
         return results
     }
