@@ -69,15 +69,31 @@ npm lint
 npm test
 ```
 
+## Testing
+It is possible to test the action prior to publishing it to the marketplace.
+
+- Create a dedicated test branch perhaps by branching off the development branch.
+- Comment the `dist` folder out of the `.gitignore` file.
+- Run `npm build`.
+- Commit the built `dist/index.js` and `.gitignore` file to the test branch.
+- Reference the branch in your workflow file using `- uses: DfE-Digital/keyvault-yaml-secret@myTestBranchName`.
+- Once the action has been tested and you are happy with it:
+  - Delete the test branch;
+  - PR the development branch in to main;
+  - Follow releasing process below;
+  - Update the workflow version reference to the version used when executing the `npm version "v#.#.#"` command below.
+
 ## Releasing
 
-To create a realease you can run the following commands ensuring that you are on main:
+To create a [release](https://github.com/DFE-Digital/keyvault-yaml-secret/releases) you can run the following commands ensuring that you are on main:
 
 ``` bash
 npm version "v1.0.0"
 git push --follow-tags
 ```
 
-Once the release has been created you will need to publish it by following the instructions [provided by GitHub](https://docs.github.com/en/actions/creating-actions/publishing-actions-in-github-marketplace).
+To publish the release as the latest version of the  action to the GitHub Marketplace, edit any release details in the releases section of the actions GitHub repo and select 'Publish this Action to the GitHub Marketplace'. Click `Update release` to save the edits and publish.
+
+Further details about publishing actions in the marketplace are [provided by GitHub](https://docs.github.com/en/actions/creating-actions/publishing-actions-in-github-marketplace).
 
 Ensure that the security email has been set correctly and the primary catagory is set to `Continuous integration`.
