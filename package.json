@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.9.1",
-    "@azure/core-http": "^2.2.7",
+    "@azure/core-http": "^3.0.0",
     "@azure/identity": "^3.0.0",
     "@azure/keyvault-secrets": "^4.6.0",
     "yaml": "^2.1.1"
