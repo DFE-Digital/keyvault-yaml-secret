@@ -62,6 +62,9 @@ This action has been developed with node `v16`.
 # Install the dependencies
 npm install
 
+# If you see any vulnerabilities run following command
+npm audit fix
+
 # Run tslint
 npm lint
 
